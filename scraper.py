@@ -1,4 +1,4 @@
-from gml_scraper import scrape
+from dc_base_scrapers.xml_scraper import Wfs2Scraper
 
 
 stations_url = "http://ilocal.carmarthenshire.gov.uk/mapping/assets?service=WFS&version=1.1.1&request=GetFeature&typeNames=Polling_Stations&srsName=EPSG%3A4326"
@@ -11,4 +11,5 @@ stations_fields = {
 council_id = 'W06000010'
 
 
-scrape(stations_url, council_id, 'stations', stations_fields, 'register', xml_format='wfs/2.0')
+stations_scraper = Wfs2Scraper(stations_url, council_id, 'stations', stations_fields, 'register')
+stations_scraper.scrape()
